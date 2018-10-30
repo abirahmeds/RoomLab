@@ -1,8 +1,7 @@
 package Game;
 
 import People.Person;
-import Rooms.Room;
-import Rooms.WinningRoom;
+import Rooms.*;
 
 import java.util.Scanner;
 
@@ -20,7 +19,16 @@ public class Runner {
 		{
 			for (int y = 0; y < building[x].length; y++)
 			{
-				building[x][y] = new Room(x,y);
+				double r = Math.random();
+				if (r < 0.5)
+				{
+					building[x][y] = new HappyRoom(x,y);
+				}
+				else
+				{
+					building[x][y] = new Room(x,y);
+				}
+
 			}
 		}
 		
@@ -28,6 +36,7 @@ public class Runner {
 		int x = (int)(Math.random()*building.length);
 		int y = (int)(Math.random()*building.length);
 		building[x][y] = new WinningRoom(x, y);
+
 		 
 		 //Setup player 1 and the input scanner
 		Person player1 = new Person("FirstName", "FamilyName", 0,0);
